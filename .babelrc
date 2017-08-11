@@ -1,0 +1,27 @@
+//babel配置文件
+{
+  "presets": [
+    ["es2015", {"modules": false}],
+    "react",
+    "stage-2"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }],
+    "transform-decorators-legacy",
+    "transform-async-to-generator",
+    "transform-do-expressions",
+    "syntax-do-expressions"
+  ]
+
+}
+//这样还是不能在项目中使用es7的async/await了。还需要更多的配置
+//1. 使用babel-polyfill。有一个不好地地方，babel-polyfill会污染global对象，
+//所以不适合于library之类的使用。仅适合于web app使用。
+//2. 使用babel运行时转码工具，transform-runtime插件。使用这个方法正好弥补了
+//上面的方法的不足之处。它是尤其适合于library一类的项目使用。*/
